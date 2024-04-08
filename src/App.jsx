@@ -1,25 +1,31 @@
-import Button from "./Component/Button"
-import { useState } from 'react';
-import PricingSection from "./Component/Princing";
+import React from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Header from "./Component/Header.jsx";
+import Home from './Component/Home/Home';
+import Blogs from './Pages/Blog';
+import Contact from './Component/Contact/Contact';
+import NoPage from './Pages/NoPage';
+
+
 
 function App() {
-  const [show, setShow] = useState(false)
   return (
     <>
+      <BrowserRouter>
+      <Header />
+      <Routes>
+        {/* <Route path="/" element={<Header />}> */}
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        {/* </Route> */}
+      </Routes>
+    </BrowserRouter>
 
 
-        <button className='' onClick={() => setShow(!show)}>
-            Toggole Button 
-        </button>
-     <h1 className="text-3xl font-bold underline font-sans">
-      Hello world!
-    </h1>
-
-    {show && <Button/>}
-
-    <PricingSection/>
     </>
   )
 }
 
-export default App
+export default App ;
