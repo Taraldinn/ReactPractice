@@ -1,10 +1,11 @@
-import {legacy_createStore as createStore, applyMiddleware } from 'redux';
+import {legacy_createStore as createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './reducres/rootReducers.js';
 
 const store = createStore(
-  reducer,
+  rootReducer,
   composeWithDevTools(
-    applyMiddleware(...middleware)
+    // applyMiddleware(...middleware)
     // other store enhancers if any
   )
 );
